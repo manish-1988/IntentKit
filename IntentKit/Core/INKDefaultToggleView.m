@@ -29,7 +29,7 @@
 
         self.label = [[UILabel alloc] init];
 
-        self.label.text = INKLocalizedString(@"SetDefaultToggleLabel", nil);
+        self.label.text = INKLocalizedString(@"Remember my choice", nil);
         self.label.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapTextLabel)];
         [self.label addGestureRecognizer:tapRecognizer];

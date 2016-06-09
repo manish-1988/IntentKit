@@ -22,6 +22,10 @@
  
  This is used when the user's preferred app for a handler cannot perform the task they're trying to do; we don't want them to try to register a secondary default. */
 - (BOOL)canSetDefault;
+
+//This is used for removing all default setting
+- (void)removeAllDefaults;
+
 @end
 
 

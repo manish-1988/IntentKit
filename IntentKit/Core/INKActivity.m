@@ -146,6 +146,7 @@
 - (void)performActivityInViewController:(UIViewController *)presentingViewController {
     if (!self.actions[self.activityCommand]) { return; }
 
+    printf("%@", self.presenter);
     if (self.presenter) {
         [self.presenter performAction:self.activityCommand
                                params:self.activityArguments

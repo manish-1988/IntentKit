@@ -41,6 +41,7 @@ static CGFloat const INKActivityViewControllerMinimumSpacing_Pad = 10.f;
 
 @property (strong, nonatomic) NSArray *activityItems;
 @property (strong, nonatomic) NSArray *applicationActivities;
+@property (strong, nonatomic) UIView *bottomLine;
 @end
 
 @implementation INKActivityViewController
@@ -60,7 +61,7 @@ static CGFloat const INKActivityViewControllerMinimumSpacing_Pad = 10.f;
             self.contentView = [[UIView alloc] init];
             [self.view addSubview:self.contentView];
         }
-
+        
         [self addDefaultsToggle];
         [self addBlurBackground];
 
@@ -137,7 +138,8 @@ static CGFloat const INKActivityViewControllerMinimumSpacing_Pad = 10.f;
     self.contentView.frame = frame;
     self.blurToolbar.frame = self.contentView.bounds;
 
-    [self.cancelButton moveToPoint:CGPointMake(0, self.contentView.height - self.cancelButton.height)];
+    [self.bottomLine moveToPoint:CGPointMake(0, self.contentView.height - self.cancelButton.height)];
+    [self.cancelButton moveToPoint:CGPointMake(0, self.contentView.height - self.cancelButton.height+2)];
 
 }
 - (void)setBounds {
@@ -230,12 +232,19 @@ static CGFloat const INKActivityViewControllerMinimumSpacing_Pad = 10.f;
 }
 
 - (void)addCancelButton {
+    
     self.cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.cancelButton.frame = CGRectMake(0, 0, self.view.width, 44.f);
-    [self.cancelButton setTitle:INKLocalizedString(@"CancelButtonText", nil) forState:UIControlStateNormal];
+    [self.cancelButton setTitle:INKLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
     self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:24.f];
     self.cancelButton.backgroundColor = UIColor.clearColor;
     [self.cancelButton addTarget:self action:@selector(didTapCancelButton) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.bottomLine = [[UIView alloc] init];
+    self.bottomLine.frame = CGRectMake(0, 0, self.view.width, 2);
+    self.bottomLine.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.2];
+    [self.contentView addSubview:self.bottomLine];
+    
     [self.contentView addSubview:self.cancelButton];
 }
 

@@ -9,6 +9,7 @@
 #import "INKDefaultsManager.h"
 
 static NSString * const INKDefaultsManagerUserDefaultsKey = @"IntentKitDefaults";
+static NSString * const INKAlwaysShowActivityKey = @"IntentKitShowActivity";
 
 @implementation INKDefaultsManager
 
@@ -45,6 +46,7 @@ static NSString * const INKDefaultsManagerUserDefaultsKey = @"IntentKitDefaults"
     dict[NSStringFromClass(handlerClass)] = appName;
 
     [defaults setObject:dict forKey:INKDefaultsManagerUserDefaultsKey];
+    [defaults setBool:NO forKey:INKAlwaysShowActivityKey];
     [defaults synchronize];
 }
 
@@ -63,6 +65,7 @@ static NSString * const INKDefaultsManagerUserDefaultsKey = @"IntentKitDefaults"
 
 - (void)removeAllDefaults {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:INKDefaultsManagerUserDefaultsKey];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:INKAlwaysShowActivityKey];
 }
 
 @end

@@ -136,4 +136,8 @@
 - (BOOL)canSetDefault {
     return (self.defaultApp == nil) && !self.disableSettingDefault;
 }
+
+- (void)removeAllDefaults {
+    [self.defaultsManager removeAllDefaults];
+}
 @end
